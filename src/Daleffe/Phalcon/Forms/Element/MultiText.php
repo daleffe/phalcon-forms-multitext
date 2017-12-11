@@ -16,17 +16,17 @@ class MultiText extends \Phalcon\Forms\Element
             $attributes = $this->getAttributes();
         }
 
-        var_dump($attributes);
-        die();
+        foreach ($this->getDefault() as $default) {
+            // It is giving error, after the second invalid submit generate a new array of arrays, instead of an array of strings.
+            if (is_array($default)) $default = $default[0];
 
-        /*foreach ($attributes['elements'] as $key => $value) {
-            $checked = ($key == $this->getValue()) ? ' checked' : null;
-
-            $html .= '<div class="' . $attributes['class'][$key] . '">';
-            $html .= '<input type="radio" id="' . $this->getName() . $key . '" name="' . $this->getName() . '" value="' . $key . '"' . $checked . ' />';
-            $html .= '<label for="' . $this->getName() . $key . '">' . $value . '</label>';
-            $html .= "</div>";
-        }*/
+            $html .= '<div class="control-group input-group ' . $attributes['div-class'] .'" style="margin-top:10px">';
+            $html .= '<input type="text" name="' . $this->getName() . '[]" class=' . $attributes['class'] . ' placeholder="' . $attributes['placeholder'] . '" value="' . $default . '" />';
+            $html .= '<div class="input-group-btn"> ';
+            $html .= '<button class="btn btn-basic ' . $attributes['button-class'] . '" type="button"><i class="glyphicon glyphicon-remove"></i></button>';
+            $html .= '</div>';
+            $html .= '</div>';
+        }
 
         return $html;
     }
