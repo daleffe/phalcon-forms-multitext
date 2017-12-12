@@ -52,7 +52,7 @@ $this->add($phones);
 
 So, in view use:
 ```php
-{{ form.render('status') }}
+{{ form.render('aditional_phones[]') }}
 ```
 
 This component use JQuery to control input fields:
