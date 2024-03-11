@@ -1,6 +1,6 @@
 # Phalcon Forms
 ## Multi Text
-Phalcon Form element to group text inputs.
+Phalcon (v4) Form element to group text inputs.
 
 > Component for specific use in multiple text fields in editing, not for creation. JavaScript must be used to generate text boxes on data-free forms.
 
@@ -30,7 +30,7 @@ use Daleffe\Phalcon\Forms\Element\MultiText;
 $phones = new Text("phones[]", array('class' => 'form-control js-mask-phone', 'placeholder' => $this->translate->_('Phone')));
 $phones->setLabel($this->translate->_('Phone'));
 $phones->setFilters(['striptags', 'trim', 'string']);
-		
+
 // -> Edit
 if (!is_null($entity)) {
 	$entityPhones = array_filter($entity->phones);
